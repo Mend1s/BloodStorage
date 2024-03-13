@@ -12,6 +12,8 @@ import { BloodTypePipe } from '../../pipes/bloodType.pipe';
 import { RhFactorPipe } from '../../pipes/rhFactor.pipe';
 import { StatusDonorPipe } from '../../pipes/statusDonor.pipe';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { DialogDonorComponent } from '../dialog-donor/dialog-donor.component';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +28,8 @@ import { MatChipsModule } from '@angular/material/chips';
     BloodTypePipe,
     RhFactorPipe,
     StatusDonorPipe,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -42,8 +45,9 @@ export class HomeComponent implements OnInit {
 
   private _bloodService = inject(BloodService);
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.donors$);
+
   }
 
   ngAfterViewInit() {
@@ -53,6 +57,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.listDonors();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogDonorComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   listDonors() {
