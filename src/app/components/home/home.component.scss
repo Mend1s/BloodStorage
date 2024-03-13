@@ -1,0 +1,31 @@
+.container {
+  width: 960px;
+  margin: 100px auto 0;
+}
+
+.mat-table {
+  border: 1px solid #dfe7ef;
+  border-radius: 10px;
+  padding: 1.5em;
+}
+
+.mat-mdc-standard-chip {
+  &.tag {
+    background-color: #60ef60 !important;
+    color: #300d6f !important;
+
+    .mat-mdc-chip-action-label {
+      color: #553094 !important;
+      font-weight: 700 !important;
+      font-size: 11px !important;
+    }
+    // &.selected {
+    //   background-color: #d0f1e7 !important;
+
+    //   .mat-mdc-chip-action-label,
+    //   .mat-mdc-chip-action-label span {
+    //     color: #108c67 !important;
+    //   }
+    // }
+  }
+}
