@@ -14,6 +14,8 @@ import { StatusDonorPipe } from '../../pipes/statusDonor.pipe';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { DialogDonorComponent } from '../dialog-donor/dialog-donor.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +31,9 @@ import { DialogDonorComponent } from '../dialog-donor/dialog-donor.component';
     RhFactorPipe,
     StatusDonorPipe,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

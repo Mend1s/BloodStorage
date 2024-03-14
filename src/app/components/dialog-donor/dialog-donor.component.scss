@@ -1,16 +1,30 @@
 mat-dialog-content {
-  width: 1019px;
-  height: 592px;
+  padding: 0 20px;
 }
 
 .container-forms {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 
-  mat-form-field, button {
-    width: 400px;
+  // mat-form-field, button {
+  //   width: 400px;
+  // }
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.g-t-c {
+  grid-template-columns: 1fr;
+
+  &-1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-2 {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -1,100 +1,136 @@
 <h2 mat-dialog-title>Cadastro de doador</h2>
-<mat-dialog-content class="mat-typography">
-  <form [formGroup]="formsNewDonor" class="container-forms">
-    <h1>Editar cliente</h1>
-    <ng-template #createClient>
-      <h1>Cadastro de cliente</h1>
-    </ng-template>
+<mat-dialog-content>
+  <form [formGroup]="formsNewDonor" class="grid">
 
-    <p class="g-c-s3">Dados Pessoais</p>
-    <mat-divider class="g-c-s3"></mat-divider>
-
-    <mat-form-field appearance="outline" class="g-c-s3">
-      <mat-label>Nome</mat-label>
-      <input matInput placeholder="Nome" formControlName="fullName" minlength="3" maxlength="45">
-      <mat-error>Insira um nome válido.</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="g-c-s1">
-      <mat-label>Data de Nascimento</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <!-- <mat-form-field appearance="outline" class="g-c-s1">
-      <mat-label>Telefone</mat-label>
-      <input matInput placeholder="Ex. 11 98432-2342" formControlName="telefone" minlength="11" maxlength="14"
-        type="number">
-      <mat-error>Insira um documento válido.</mat-error>
-    </mat-form-field> -->
-
-    <!-- <mat-form-field appearance="outline" class="g-c-s1">
-      <mat-label>Documento</mat-label>
-      <input matInput placeholder="CPF/CNPJ" formControlName="documento" minlength="11" maxlength="14" type="number">
-      <mat-error>Insira um documento válido.</mat-error>
-    </mat-form-field> -->
-
-    <mat-form-field appearance="outline" class="g-c-s2">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" formControlName="email">
-      <mat-error>Insira um email válido.</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Sexo</mat-label>
-      <mat-select>
-        <mat-option value="one">Masculino</mat-option>
-        <mat-option value="two">Feminino</mat-option>
-        <mat-option value="three">N/A</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <!-- <p class="g-c-s3">Endereço</p>
-    <mat-divider class="g-c-s3"></mat-divider>
-
-    <div cellspacing="0" formGroupName="endereco" class="grid g-c-s3">
-
-      <mat-form-field appearance="outline" class="example-full-width" class="g-c-s3">
-        <mat-label>Logradouro</mat-label>
-        <input matInput placeholder="Ex. San Francisco" formControlName="logradouro" minlength="10" maxlength="45">
-        <mat-error>Insira um Endereço válido.</mat-error>
+    <div class="grid g-t-c-1">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome completo</mat-label>
+        <input
+        matInput
+        placeholder="Ex: Maria Luiza"
+        formControlName="fullName"
+        minlength="3"
+        maxlength="65">
+        <mat-error>Insira o nome completo do doador.</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Número</mat-label>
-        <input matInput placeholder="Ex. 23" formControlName="numero">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+        matInput
+        placeholder="Ex: andrew@gmail.com"
+        formControlName="email">
+        <mat-error>Insira um email válido.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="grid g-t-c-1">
+      <mat-form-field appearance="outline">
+        <mat-label>Data de Nascimento</mat-label>
+        <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="birthDate"
+        minlength="7" maxlength="8"
+        placeholder="Ex: MM/DD/YYYY">
+        <mat-error>Insira uma data para cadastro.</mat-error>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>CEP</mat-label>
-        <input matInput #postalCode maxlength="5" placeholder="Ex. 06515-006" formControlName="cep">
+      <mat-form-field appearance="outline">
+        <mat-label>Gênero</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value=0>Feminino</mat-option>
+          <mat-option value=1>Masculino</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="grid g-t-c-2">
+      <mat-form-field appearance="outline">
+        <mat-label>Peso</mat-label>
+        <input
+        matInput
+        placeholder="Ex. 75Kg"
+        type="number" formControlName="weigth">
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Complemento</mat-label>
-        <input matInput placeholder="Ex. California" formControlName="complemento">
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo Sanguíneo</mat-label>
+        <mat-select formControlName="bloodtype">
+          <mat-option value=0>A</mat-option>
+          <mat-option value=1>B</mat-option>
+          <mat-option value=2>AB</mat-option>
+          <mat-option value=3>O</mat-option>
+        </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Bairro</mat-label>
-        <input matInput #postalCode maxlength="5" placeholder="Ex. 06515-006" formControlName="bairro">
+      <mat-form-field appearance="outline">
+        <mat-label>Fator RH</mat-label>
+        <mat-select formControlName="rhfactor">
+          <mat-option value=0>Positivo</mat-option>
+          <mat-option value=1>Negativo</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="address">
+      <mat-form-field
+        class="grid g-t-c"
+        appearance="outline">
+        <mat-label>Rua</mat-label>
+        <input
+        matInput
+        placeholder="Ex. 100 Main St"
+        formControlName="street">
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Cidade</mat-label>
-        <input matInput placeholder="Ex. San Francisco" formControlName="cidade">
-      </mat-form-field>
+      <div class="grid g-t-c-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input
+          matInput
+          placeholder="Ex. Av. Paulista, 503"
+          formControlName="city">
+        </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Estado</mat-label>
-        <input matInput placeholder="Ex. California" formControlName="estado">
-      </mat-form-field>
-    </div>-->
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="state" required>
+            <mat-option>--</mat-option>
+            @for (state of states; track state.uf) {
+              <mat-option [value]="state">{{state.uf}}</mat-option>
+            }
+          </mat-select>
+          <mat-error>Escolha um estado.</mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>estado</mat-label>
+          <mat-select formControlName="state">
+            <mat-option value=SP>SP</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input
+          matInput
+          #postalCode
+          maxlength="8"
+          placeholder="Ex. 06515-003"
+          formControlName="zipCode"
+          required>
+          <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
+          <mat-error>Digite um CEP válido.</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!formsNewDonor.valid">Cadastrar</button>
 </mat-dialog-actions>
